@@ -17,7 +17,7 @@ return {
 
   -- enable/ disable trouble
   { "folke/trouble.nvim", enabled = true },
- 
+
 
   -- add more treesitter parsers
   {
@@ -42,6 +42,7 @@ return {
       },
     },
   },
+
 
   -- the opts function can also be used to change the default opts:
   {
