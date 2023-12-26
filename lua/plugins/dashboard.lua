@@ -2,15 +2,24 @@ return {
     "nvimdev/dashboard-nvim",
     event = "VimEnter",
     opts = function()
+      local hour = os.date("*t").hour
+      local greeting = ""
+      if hour < 12 then
+        greeting = "Good morning   "
+      elseif hour < 18 then
+        greeting = "Good afternoon "
+      else
+        greeting = "Good evening   "
+      end
       local logo = [[
- ^ ^                                              .
-(O,O)                                             .
-(   ) Make it work, make it right, make it fast   .
--"-"-----------------------------------------------
-      ]]
- 
-      logo = string.rep("\n", 8) .. logo .. "\n\n"
- 
+^ ^
+(O,O)
+(   )
+-"-"-
+]]
+
+      logo = string.rep("\n", 8) .. logo .. greeting .. "\n\n"
+
       local opts = {
         theme = "doom",
         hide = {
@@ -39,12 +48,12 @@ return {
           end,
         },
       }
- 
+
       for _, button in ipairs(opts.config.center) do
         button.desc = button.desc .. string.rep(" ", 43 - #button.desc)
         button.key_format = "  %s"
       end
- 
+
       -- close Lazy and re-open when the dashboard is ready
       if vim.o.filetype == "lazy" then
         vim.cmd.close()
@@ -55,7 +64,7 @@ return {
           end,
         })
       end
- 
+
       return opts
     end,
   }
