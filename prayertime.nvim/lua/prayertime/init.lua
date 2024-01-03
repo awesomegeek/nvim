@@ -9,33 +9,46 @@ function CloseMenu()
  end
 
 function ShowMenu(opts, cb)
-  local height = 20
+  local height = 10
   local width = 30
   local borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" }
 
+
   Win_id = popup.create(opts, {
         title = "Prayer Times",
-        highlight = "Prayer Times for Cyberjaya",
+        highlight = "PrayerTimesWindow",
         line = math.floor(((vim.o.lines - height) / 2) - 1),
         col = math.floor((vim.o.columns - width) / 2),
         minwidth = width,
-        minheight = height,
-        borderchars = borderchars,
+        pos = "topright",
+      --   borderchars = borderchars,
+        cursorline = true,
         callback = cb,
   })
   local bufnr = vim.api.nvim_win_get_buf(Win_id)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "q", "<cmd>lua CloseMenu()<CR>", { silent=false })
+--   vim.api.nvim_buf_set_option(bufnr, "readonly", true)
+--   vim.api.nvim_buf_set_option(bufnr, "modifiable", false)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "q", "<cmd>lua CloseMenu()<CR>", { silent=true })
+--   vim.api.nvim_command("autocmd BufLeave <buffer> silent! lua CloseMenu()")
+  vim.api.nvim_command("autocmd WinLeave <buffer> silent! lua CloseMenu()")
+  -- close window when lose focus
+
+
+   -- vim.api.nvim_win_set_option(Win_id, "winhighlight", "Normal:PrayerTimesWindow")
+   -- vim.api.nvim_win_set_option(Win_id, "cursorline", true)
 end
 
 function MyMenu()
    local opts = {
-      "Fajir: 05:45",
-      "Sunrise: 07:10",
-      "Dhuhr: 13:00",
-      "Asr: 16:30",
-      "Maghrib: 19:15",
-      "Isha: 20:30",
-      "Midnight: 00:00",
+      " Prayer for Cyberjaya",
+      " -------------------",
+      " Fajr \t\t\t 05:45",
+      " Sunrise \t\t 07:10",
+      " Dhuhr \t\t\t 13:00",
+      " Asr \t\t\t\t 16:30",
+      " Maghrib \t\t 19:15",
+      " Isha \t\t\t 20:30",
+      " Midnight \t 00:00",
    }
    local cb = function(_, sel)
      print("it works")
