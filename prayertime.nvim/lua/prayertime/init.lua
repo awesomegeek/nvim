@@ -26,8 +26,7 @@ end
 function M.setup(opts)
    opts = opts or {}
    vim.keymap.set("n", "<Leader>h", function()
-    if opts.name then
-      --  print("hello, " .. opts.name)
+    if opts.city then
       M.get_prayer_times(
          {
             city=opts.city,
@@ -36,7 +35,7 @@ function M.setup(opts)
          }
       )
     else
-       print("hello")
+       print("Please set cityname and coordinates")
     end
  end)
 
