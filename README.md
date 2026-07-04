@@ -1,4 +1,4 @@
-# � My Neovim Setup 2026
+# 🚀 My Neovim Setup 2026
 
 Personal Neovim configuration for 2026, built on top of [LazyVim](https://github.com/LazyVim/LazyVim).
 
@@ -10,7 +10,6 @@ Personal Neovim configuration for 2026, built on top of [LazyVim](https://github
 - **LSP:** Configured via `mason.nvim`
 - **Formatting:** `conform.nvim`
 - **Linting:** `nvim-lint`
-- **AI Assistant:** [opencode.nvim](https://github.com/NickvanDyke/opencode.nvim)
 
 ## 📦 Installation
 
@@ -31,4 +30,4 @@ Personal Neovim configuration for 2026, built on top of [LazyVim](https://github
 
 ## ⌨️ Keymaps
 
-Refer to [lua/config/keymaps.lua](lua/config/keymaps.lua) for custom keybindings.
+Custom keybindings live in [lua/config/keymaps.lua](lua/config/keymaps.lua).
